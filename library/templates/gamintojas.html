@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container gamintojas">
+    <h4>{{ gamintojas.company_name}} {{ gamintojas.company_country }}</h4>
+    <hr/>
+    <p>{{ gamintojas.description }}</p>
+    </hr>
+    </br>
+    <h5>Mes turime šias {{ gamintojas.company_name }} {{ gamintojas.company_country }} produktai:</h5>
+    {% for product in gamintojas.products.all %}
+       <li>{{ product.title }}</li> 
+    {% endfor %}
+    </div>
+{% endblock %}

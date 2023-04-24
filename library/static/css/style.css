@@ -1,0 +1,34 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+.logo img {
+	height: 10px;
+  }
+
+.container_puslapiai {
+  position: relative;
+  display: block;
+  padding: 200px
+}
+
+.product-cover {
+    max-height: 20px
+}
+
+.isec-artikulas
+#sizetable ul .tag-column#head {
+  border-left: 0;
+      border-left-width: 0px;
+      border-left-style: initial;
+      border-left-color:initial;
+  display: flex;
+  flex-flow: column;
+    flex-direction: column;
+    flex-wrap: initial;
+  flex: 1 0 150px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 150px;
+}

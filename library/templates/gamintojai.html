@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Gamintojai</h1>
+  <p>Gamintoju sąrašas</p>
+  <p>Šiuo metų prekes  mes  gauname  iš:</p>
+  {% for a in gamintojai %}
+  <li><a href="{% url 'gamintojas' a.id %}">{{a.company_name}} {{a.company_country}}</a></li>
+  {% endfor %}
+
+
+
+
+
+
+
+
+<div class="container puslapiai">
+  <nav aria-label="...">
+      {% if gamintojai.has_other_pages %}
+          <ul class="pagination pagination-sm justify-content-end">
+              {% for i in gamintojai.paginator.page_range %}
+                  {% if gamintojai.number == i %}
+                      <li class="page-item active">
+                          <a class="page-link">{{ i }}</a>
+                      </li>
+                  {% else %}
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                      </li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+      {% endif %}
+  </nav>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <img src="{{ product.cover.url }}" style="margin-bottom: 20px;" class="product-cover">
+  <h1>{{ product.title }}</h1>
+
+  <p><strong>Gamintojas:</strong> <a href="{% url 'gamintojas' product.gamintojas.pk %}">{{ product.gamintojas }}</a></p>
+  <p><strong>Aprašymas:</strong> {{ product.summary }}</p>
+  <p><strong>Prekės kodas:</strong> {{ product.code }}</p> 
+  <!-- <p><strong>Produktas:</strong> {{ product.genre.all|join:", " }}</p>   -->
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Lentelė:</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Statusas</th>
+          <th>Atvyksta</th>
+          <th>Kiekis</th>
+          <th>Didis</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for copy in product.productinstance_set.all %}
+          <tr>
+            <td>
+              <p class="{% if copy.status == 'l' %}text-success{% elif copy.status == 'r' %}text-danger{% else %}text-warning{% endif %}">
+                {{ copy.get_status_display }}
+              </p>
+            </td>
+            {% if copy.status != 'a' %}
+              <td>{{ copy.due_back }}</td>
+            {% else %}
+              <td></td>
+            {% endif %}
+            <td>{{ copy.quantity }}</td>
+            <td>{{ copy.size }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table> 
+
+<!-- 
+    {% for copy in product.productinstance_set.all %}
+      <hr>
+      <p class="{% if copy.status == 'l' %}text-success{% elif copy.status == 'r' %}text-danger{% else %}text-warning{% endif %}">
+        {{ copy.get_status_display }}
+      </p>
+      {% if copy.status != 'a' %}
+        <p><strong>Atvyksta:</strong> {{ copy.due_back }}</p>
+      {% endif %}
+      <p class="text-muted"><strong>Kiekis:</strong> {{ copy.quantity  }}</p>
+      <p class="text-muted"><strong>Didis:</strong> {{ copy.size }}</p>
+    {% endfor %}
+  </div> -->
+{% endblock %}
