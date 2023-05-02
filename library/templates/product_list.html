@@ -3,8 +3,8 @@
 
 {% block content %}
 
-  <!-- <h1>Produktų sąrašas:</h1>
-  {% if products %}
+  <h3 style="color:blue;">Produktų sąrašas:</h3>
+  <!-- {% if products %}
   <ul>
     {% for product in products %}
       <li>
@@ -17,7 +17,7 @@
   {% endif %} -->
 
   {% load static %}
-  <h1>Produktų sąrašas</h1></br>
+  <!-- <h1>Produktų sąrašas</h1></br> -->
   {% if products %}
   <div class="row">
     {% for product in products %}
@@ -43,7 +43,7 @@
 <div class="container_puslapiai">
   <nav aria-label="...">
       {% if products.has_other_pages %}
-          <ul class="pagination pagination-sm justify-content-end">
+          <ul class="pagination pagination-md justify-content-center border-radius">
               {% for i in products.paginator.page_range %}
                   {% if products.number == i %}
                       <li class="page-item active">

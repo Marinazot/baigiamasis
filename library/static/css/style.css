@@ -1,34 +1,44 @@
+
+.header {
+	display: flex;
+    height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #f2f2f2;
+	padding: 10px;
+	box-shadow: 0px 0px 10px #ccc;
+  }
+
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
     list-style: none;
+    
 }
-.logo img {
-	height: 10px;
+
+html, body  {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:rgb(251, 250, 246);
+
+    font-family:'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 12pt;
+
+    padding-top: 30px;
+    
+
+}
+
+.footer {
+    position: absolute;
+    bottom: 1%;
+    width: 100%;
+    height: 50px;
+    background-color: #eee;
   }
 
-.container_puslapiai {
-  position: relative;
-  display: block;
-  padding: 200px
-}
 
-.product-cover {
-    max-height: 20px
-}
 
-.isec-artikulas
-#sizetable ul .tag-column#head {
-  border-left: 0;
-      border-left-width: 0px;
-      border-left-style: initial;
-      border-left-color:initial;
-  display: flex;
-  flex-flow: column;
-    flex-direction: column;
-    flex-wrap: initial;
-  flex: 1 0 150px;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 150px;
-}
+  

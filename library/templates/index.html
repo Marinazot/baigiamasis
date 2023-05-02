@@ -2,12 +2,17 @@
 
 {% block content %}
   <h1>Batų sandėlis</h1>
-  <p>Pasirinkite norima modeli: </p>
+ 
   <p>Šiuo metu turime :</p>
+
+ 
+
   <ul>
-    <li><strong>Žieminiai </strong> {{ num_instances }}</li>
-    <li><strong>Vasariniai </strong> {{ num_instances_available }}</li>
-    <li><strong>Guminiai</strong> {{ num_gamintojai }}</li>
+    
+    <li><strong>Mūsų gamintojai </strong> {{ num_gamintojai }}</li>
+    
+    <li><strong>Bendras skačius galimų variantų </strong> {{ num_instances }}</li>
+    <li><strong>Laisvų galimų variantų</strong> {{ num_instances_available }}</li>
   </ul>
   <!-- <p>Čia jūs lankotes {{ num_visits }}-ą kartą.</p> -->
 {% endblock %}

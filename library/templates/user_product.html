@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Mano prekes:</h1>
+    <hr>
+        <ul>
+        
+        <li><strong class="{% if object.is_overdue %}text-danger{% endif %}">Pavadinimas: {{object.product.title}}</strong></li>
+        <li><strong>Atvikymo  terminas:</strong> {{object.due_back}}</li>
+        <br/>
+      </li>
+    </ul>
+{% endblock %}

@@ -11,16 +11,20 @@
   {% endif %}
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
  
-  <!-- <link rel="./stylesheet" href="style.css"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- <link rel="./stylesheet" href="style.css">  -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
  
-  <!-- Add additional CSS in static file -->
+
+<!-- Add additional CSS in static file -->
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <!-- <script src="./script.js" defer></script> -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
+<body >
+  <div class="page-container">
     <header>
+      <div class="header">
       <!-- <h1><a href="{% url 'index' %}"></a></h1> -->
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -38,134 +42,67 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <!-- <a class="nav-link active" aria-current="{% url 'index' %}">Pradžia</a> -->
-              <a class="nav-link" href="{% url 'index' %}">Pradžia</a>
+              <!-- <a class="nav-link" href="{% url 'index' %}">Pradžia</a>
               <a class="nav-link" href="{% url 'products' %}">Visos prekes</a>
-              <a class="nav-link" href="{% url 'gamintojai' %}">Visi gamintojai</a>
+              <a class="nav-link" href="{% url 'gamintojai' %}">Visi gamintojai</a> -->
+              
+              <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                  <li class="nav-item"><a class="nav-link" href="{% url 'profilis' %}">
+                    <svg class="bi bi-person" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002.002zM8 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                  {{ user.get_username }}</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'my-borrowed' %}">mano prekes</a></li>
+                  
+                  <li class="nav-item"><a class="nav-link" href="{% url 'my-borrowed-new' %}?next=/library">Sukurti Nauja Pkeke</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next=/library">Atsijungti</a></li>
+                {% else %}
+                  <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Prisijungti</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registruotis</a></li>
+                {% endif %}
+                {% if not user.is_authenticated %}
+                {% endif %}
+              </ul>
+              
               <a>
                 <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
                 <input name="query" class="form-control" type="text" placeholder="Paieška">
-
-
                 </form>
               </a>
-                {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="#">
-                  <svg class="bi bi-person" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002.002zM8 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>
-                  </svg>
-                {{ user.get_username }}</a></li>
-
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next=/library">Atsijungti</a></li>
-              {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Prisijungti</a></li>
-                {% if not user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="#">Registruotis</a></li>
-            {% endif %}  
-                <!-- <li class="nav-item"><a class="nav-link" href="#">Registruotis</a></li>
-              {% endif %} -->
-        
             </div>
           </div>
         </div>
       </nav>
+    </div>
     </header>
+  
   <br>
   <br>
   <br>
-  <br>
+  <div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-1">
       {% block sidebar %}
-        <!-- <ul class="sidebar-nav">
+        <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Pradžia</a></li>
-          <li><a href="{% url 'products' %}">Visos prekes</a></li>
           <li><a href="{% url 'gamintojai' %}">Visi gamintojai</a></li>
-        </ul> -->
+          <li><a href="{% url 'products' %}">Visos prekes</a></li>
+        </ul>
      {% endblock %}
       </div>
       <div class="col-sm-9 ">{% block content %}{% endblock %}</div>
     </div>
-    <!-- <div id="sizetable">
-      <ul>
-        <liid="head" class="tag-column">
-          <div class="list">
-            <div class="tag-cell">Sizes</div>
-            <dv class="head-tag">In Stock</dv>
-            <dv class="head-tag">DATA</dv>
-          </div>
-          <div class="tag-cell"></div>
-        </li>
+    
+  </div> 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</div>
 
-        <li id="35" class="tag-column">
-          <div class="list"> ==$0
-            <div class="head-tag">35</div>
-            <div id="qta_35" class="tag-cell qta_yellow"> </div>
-            <div class="tag-cell"> </div> ==$0
-          </div>
-          <div class="tag-cell">
-            <input id="f6q7y_QTA_35" class="form-control qta-input qta-taglia text-ritgt" type="number" min="0" data-sal="7.00" data-sta="35"> ==$0
-          </div>  
-        </li>
 
-        <li id="36" class="tag-column">
-          <div class="list"> ==$0
-            <div class="head-tag">36</div>
-            <div id="qta_35" class="tag-cell qta_yeloww"> </div>
-            <div class="tag-cell"> </div> ==$0
-          </div>  
-          <div class="tag-cell">
-            <input id="f6q7y_QTA_36" class="form-control qta-input qta-taglia text-ritgt" type="number" min="0" data-sal="7.00" data-sta="36"> ==$0
-          </div> 
-        </li>  
 
-        <li id="37" class="tag-column">
-          <div class="list"> ==$0
-            <div class="head-tag">37</div>
-            <div id="qta_35" class="tag-cell qta_yeloww"> </div>
-            <div class="tag-cell"> </div> ==$0
-          </div>  
-          <div class="tag-cell">
-            <input id="f6q7y_QTA_37" class="form-control qta-input qta-taglia text-ritgt" type="number" min="0" data-sal="7.00" data-sta="37"> ==$0
-          </div> 
-        </li> 
-
-        <li id="38" class="tag-column">
-          <div class="list"> ==$0
-            <div class="head-tag">38</div>
-            <div id="qta_35" class="tag-cell qta_yeloww"> </div>
-            <div class="tag-cell"> </div> ==$0
-          </div>  
-          <div class="tag-cell">
-            <input id="f6q7y_QTA_38" class="form-control qta-input qta-taglia text-ritgt" type="number" min="0" data-sal="7.00" data-sta="38"> ==$0
-          </div> 
-        </li> 
-
-        <li id="39" class="tag-column">
-          <div class="list"> ==$0
-            <div class="head-tag">39</div>
-            <div id="qta_35" class="tag-cell qta_yeloww"> </div>
-            <div class="tag-cell"> </div> ==$0
-          </div>  
-          <div class="tag-cell">
-            <input id="f6q7y_QTA_39" class="form-control qta-input qta-taglia text-ritgt" type="number" min="0" data-sal="7.00" data-sta="39"> ==$0
-          </div> 
-        </li> 
-
-        <li id="40" class="tag-column">
-          <div class="list"> ==$0
-            <div class="head-tag">40</div>
-            <div id="qta_40" class="tag-cell qta_yeloww"> </div>
-            <div class="tag-cell"> </div> ==$0
-          </div>  
-          <div class="tag-cell">
-            <input id="f6q7y_QTA_40" class="form-control qta-input qta-taglia text-ritgt" type="number" min="0" data-sal="7.00" data-sta="40"> ==$0
-          </div> 
-        </li> 
-      </ul>
-
-    </div> -->
-  </div>
 </body>
 
 </html>

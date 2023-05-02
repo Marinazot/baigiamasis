@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Preke, Product, ProductInstance, Gamintojas
+from .models import Preke, Product, ProductInstance, Gamintojas, Profilis
 
 # Register your models here.
 class ProductsInstanceInline(admin.TabularInline):
@@ -13,15 +13,18 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ProductInstanceAdmin(admin.ModelAdmin):
-    list_display = ('product', 'status', 'due_back')
+    list_display = ('product', 'size', 'status', 'due_back', 'vartotojas', 'quantity')
+    # list_editable = ('status', 'due_back')
     list_filter = ('status', 'due_back')
+    # search_fields = ('product__title', 'id')
 
     fieldsets = (
-        ('General', {'fields': ('id', 'product')}),
-        ('Availability', {'fields':('status', 'due_back','size', 'quantity')})
+        (None, {
+            'fields': ( 'product',)}),
+        ('Availability',{
+          'fields':('status', 'due_back','size', 'quantity', 'vartotojas')})
         )
     
-    search_fields = ('id', 'product__id') #?????
     
 
     
@@ -34,3 +37,4 @@ admin.site.register(Preke)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductInstance, ProductInstanceAdmin)
 admin.site.register(Gamintojas, GamintojasAdmin)
+admin.site.register(Profilis)

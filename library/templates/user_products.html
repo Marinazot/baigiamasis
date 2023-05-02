@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Mano supildytos prekes </h3>
+
+    {% if productinstance_list %}
+    <ul>
+
+      {% for productinst in productinstance_list %} 
+      <li class="{% if productinst.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'product-detail' productinst.product.pk %}">{{producinst.product.title}}</a> ({{ productinst.due_back }})        
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>Šiuo metu neivedete nei vienos prekes.</p>
+    {% endif %}       
+{% endblock %}

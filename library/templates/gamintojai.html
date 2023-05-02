@@ -2,10 +2,10 @@
 
 {% block content %}
   <h1>Gamintojai</h1>
-  <p>Gamintoju sąrašas</p>
+  <p>Tiekėjų  sąrašas</p>
   <p>Šiuo metų prekes  mes  gauname  iš:</p>
   {% for a in gamintojai %}
-  <li><a href="{% url 'gamintojas' a.id %}">{{a.company_name}} {{a.company_country}}</a></li>
+  <li><a href="{% url 'gamintojas' a.id %}">{{a.company_name}} ({{a.company_country}})</a></li>
   {% endfor %}
 
 
@@ -13,12 +13,10 @@
 
 
 
-
-
-<div class="container puslapiai">
+<div class="container_puslapiai" >
   <nav aria-label="...">
       {% if gamintojai.has_other_pages %}
-          <ul class="pagination pagination-sm justify-content-end">
+          <ul class="pagination pagination-md justify-content-center">
               {% for i in gamintojai.paginator.page_range %}
                   {% if gamintojai.number == i %}
                       <li class="page-item active">
@@ -34,5 +32,10 @@
       {% endif %}
   </nav>
 </div>
+
+
+<!-- <div class="footer">
+    <p>© (MZ) 2023 Mano Svetainė.  Visos teisės saugomos.</p>
+</div> -->
 
 {% endblock %}
