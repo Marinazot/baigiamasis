@@ -45,7 +45,7 @@
         {% for copy in instances %}
         <tr>
           <td>
-            <p class="{% if copy.status == 'l' %}text-success{% elif copy.status == 'r' %}text-danger{% else %}text-warning{% endif %}">
+            <p class="{% if copy.status == 'l' %}text-success{% elif copy.status == 'p' %}text-danger{% else %}text-warning{% endif %}">
               {{ copy.get_status_display }}
             </p>
           </td>

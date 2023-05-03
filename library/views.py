@@ -161,7 +161,7 @@ class ProductByUserDetailView(LoginRequiredMixin, DetailView):
 
 class ProductByUserCreateView(LoginRequiredMixin,UserPassesTestMixin, CreateView):
     model = ProductInstance
-    fields = ['product','size' ,'quantity' ,'due_back']
+    fields = ['product', 'status', 'size' ,'quantity' ,'due_back']
     success_url = "/library/my_products/"
     template_name = 'user_product_form.html'
    

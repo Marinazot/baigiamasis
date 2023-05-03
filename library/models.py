@@ -141,20 +141,3 @@ class Profilis(models.Model):
             img.save(self.nuotrauka.path)    
 
 
-# group_buhalteris = Group.objects.create(name='Buhalteris')
-# group_sandelininkas = Group.objects.create(name='Sandėlininkas')
-# group_registrator = Group.objects.create(name='Registaratorius')
-
-# permission_buhalter = Permission.objects.create(
-#     codename='can_input_data', 
-#     name='Produktų įvedimas', 
-#     content_type=ContentTypeHeader.objects.get_for_model(ProductIntranceModel, GamintojasModel)
-# )
-# group_buhalteris.permissions.add(permission_buhalter)
-
-# permission_sandelininkas = Permission.objects.create(
-#     codename='can_reserve_data', 
-#     name='Priduktu antkrovimas ', 
-#     content_type=ContentTypeHeader.objects.get_for_model(ProductIntranceModel, GamintojasModel)
-# )
-# group_sandelininkas.permissions.add(permission_sandelininkas)

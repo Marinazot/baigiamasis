@@ -4,6 +4,11 @@
 
   {% if form.errors %}
     <p>Prisijungimo klaida, bandykite dar kartą!</p>
+    {% for key, value in form.errors.items   %}
+    {% for error in value %}
+    <li>{{ error }}</li>
+    {% endfor %}
+    {% endfor %}
   {% endif %}
   
   {% if next %}
